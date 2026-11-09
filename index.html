@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LLMRally Support — How to benchmark your local LLMs</title>
+    <meta
+      name="description"
+      content="LLMRally benchmarks your local LLMs — speed AND quality — on your own hardware. Works with Ollama, LM Studio, MLX, llama.cpp, vLLM and any OpenAI-compatible endpoint. Native Mac app."
+    />
+    <meta name="theme-color" content="#051C3A" />
+    <link rel="canonical" href="https://carsinalys.github.io/llm-benchmark-info/" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="assets/icon-256.png" />
+    <link rel="stylesheet" href="assets/styles.css" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="LLMRally — Local LLM Benchmark" />
+    <meta
+      property="og:description"
+      content="Speed and quality benchmarking for your local LLMs — native Mac, works with Ollama, LM Studio, MLX and more."
+    />
+    <meta property="og:url" content="https://carsinalys.github.io/llm-benchmark-info/" />
+    <meta property="og:image" content="https://carsinalys.github.io/llm-benchmark-info/assets/icon-1024.png" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="topbar__brand" href="./">
+          <img src="assets/icon-128.png" alt="" width="26" height="26" />
+          LLMRally
+        </a>
+        <nav class="topbar__nav" aria-label="Sections">
+          <a href="#start">Getting started</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <section class="hero" id="contact" style="margin-top: 20px">
+        <div class="hero__top">
+          <img
+            class="hero__icon"
+            src="assets/icon-256.png"
+            alt="LLMRally app icon"
+            width="88"
+            height="88"
+          />
+          <div>
+            <span class="eyebrow" style="color: rgba(240, 245, 252, 0.6)">
+              Speed &amp; quality for your local models
+            </span>
+            <h1>LLMRally</h1>
+          </div>
+        </div>
+
+        <p class="lead">
+          LLMRally benchmarks your local LLMs on your own Mac — measuring
+          how <strong>fast</strong> they generate text and how
+          <strong>well</strong> they answer across five categories of tasks.
+          It connects to the inference server you already run
+          (Ollama, LM Studio, MLX, llama.cpp and others), and every result
+          stays on your machine.
+        </p>
+
+        <div class="hero__badges">
+          <span class="badge badge--first">Native Mac app</span>
+          <span class="badge">macOS 14 or later</span>
+          <span class="badge">Ollama · LM Studio · MLX · llama.cpp · vLLM</span>
+          <span class="badge">Capability radar — 5 axes</span>
+          <span class="badge">No data collection</span>
+        </div>
+
+        <div class="contact">
+          <div class="contact__label">Contact support</div>
+          <a class="contact__mail" href="mailto:cardinalys81@gmail.com"
+            >cardinalys81@gmail.com</a
+          >
+          <div class="contact__meta">
+            <p>
+              Email is the fastest way to reach the developer — for bugs,
+              backend compatibility questions, feature ideas and refund help.
+            </p>
+            <p>Support hours: Monday–Friday, 09:00–18:00 (UTC+3).</p>
+            <p>Typical reply time: within 2 business days.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="start" style="margin-top: var(--space-section)">
+        <h2>Getting started</h2>
+        <div class="card">
+          <ol class="steps">
+            <li>
+              <h3>Install an inference server</h3>
+              <p class="muted">
+                LLMRally does not run models itself — it benchmarks the
+                server you already run. The easiest starting point is
+                <strong>Ollama</strong> (free, <a href="https://ollama.com">ollama.com</a>):
+                <br>
+                <span class="path">brew install ollama</span>
+                <span class="path">ollama pull llama3.2:3b</span>
+                <span class="path">ollama serve</span>
+              </p>
+              <p class="tiny">
+                Also supported: LM Studio (enable the local server in the
+                Developer tab), MLX-LM <span class="path">pip install mlx-lm</span>,
+                llama.cpp's llama-server, vLLM, Jan, KoboldCpp — or any
+                server that speaks the OpenAI-compatible API.
+              </p>
+            </li>
+            <li>
+              <h3>Pick your model and run a rally</h3>
+              <p class="muted">
+                Open LLMRally and select your backend (the green dot means
+                it's running). Click <strong>Load Models</strong> to fetch the
+                list, pick a model, then hit <strong>Run Lite Rally</strong>.
+                In about 3–5 minutes you'll see speed metrics (tokens per
+                second, time to first token) and a quality score across five
+                categories — shown as a capability radar.
+              </p>
+            </li>
+            <li>
+              <h3>Read your results</h3>
+              <p class="muted">
+                The capability radar shows where your model excels at a
+                glance — each axis is one task category (knowledge,
+                reasoning, instruction following, long-context recall and
+                coding). Click a model in the Results sidebar for per-test
+                detail, response replay, and run history with trend arrows.
+                Run it again with a different quantization to see which
+                trade-off works best for you.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="how" style="margin-top: var(--space-section)">
+        <h2>How it works</h2>
+        <div class="card">
+          <h3>Speed — measured live from the stream</h3>
+          <p class="muted">
+            LLMRally sends fixed prompts to your model and measures
+            <strong>TTFT</strong> (time to first token — how long until text
+            starts appearing) and <strong>tok/s</strong> (tokens per second —
+            how fast text streams once started). Cold runs (when the model is
+            freshly loaded) are marked and excluded from warm averages, so the
+            numbers reflect real use — not the one-time load cost.
+          </p>
+
+          <h3 style="margin-top: var(--space-xl)">Quality — scored by code, not by opinion</h3>
+          <p class="muted">
+            Each quality test is a fixed prompt with a programmatically
+            verifiable answer: math problems with exact numeric results,
+            multiple-choice with the correct letter, instruction following
+            ("use exactly three bullets", "don't mention X"), needle-in-a-haystack
+            recall from long text, and code structure checks. No AI judges
+            the output — a deterministic checker does. Speed and quality are
+            never blended into one number, because a fast model isn't
+            necessarily a good one.
+          </p>
+
+          <h3 style="margin-top: var(--space-xl)">The five axes</h3>
+          <table class="spec" style="margin-top: var(--space-lg)">
+            <tbody>
+              <tr>
+                <th scope="row">Knowledge</th>
+                <td>Multiple-choice questions across topics. How well does the model know things?</td>
+              </tr>
+              <tr>
+                <th scope="row">Reasoning</th>
+                <td>Word problems with exactly one numeric answer. Can the model do the math?</td>
+              </tr>
+              <tr>
+                <th scope="row">Instruction following</th>
+                <td>Formatting constraints: bullet counts, word ranges, banned words, exact endings. Does the model listen?</td>
+              </tr>
+              <tr>
+                <th scope="row">Long-context recall</th>
+                <td>A key fact buried in a long "haystack" of context. Can the model find it?</td>
+              </tr>
+              <tr>
+                <th scope="row">Coding</th>
+                <td>Write a function to spec. Does its structure match the requirements?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="deep" style="margin-top: var(--space-section)">
+        <h2>Deep Testing — one-time $9.99</h2>
+        <p class="muted small">
+          The free tier runs forever, with no time limits. Deep Testing is a
+          one-time unlock that makes the numbers more trustworthy and adds
+          comparison tools.
+        </p>
+        <div class="card">
+          <table class="spec">
+            <tbody>
+              <tr>
+                <th scope="row">More test items</th>
+                <td>Free: 12 quality items across 5 axes. Deep: <strong>90 items</strong> — 30 knowledge, 30 reasoning, 10 instruction, 8 long-context, 12 coding.</td>
+              </tr>
+              <tr>
+                <th scope="row">Repeats &amp; confidence</th>
+                <td>Deep runs each speed stage <strong>3 times</strong> and reports the median with a 95% confidence interval — so you know how stable the measurement is.</td>
+              </tr>
+              <tr>
+                <th scope="row">Arena head-to-head</th>
+                <td>Pick two models; run both through the same stages. See which one wins per category, with honest tie detection when results are within noise.</td>
+              </tr>
+              <tr>
+                <th scope="row">Export</th>
+                <td>Save any result as CSV (spreadsheet), JSON (full record), or a PNG radar card you can share.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="tiny" style="margin-top: var(--space-lg)">
+            The price is a one-time payment — no subscription, no renewal.
+            Restore Purchases works on any Mac signed into the same Apple Account.
+          </p>
+        </div>
+      </section>
+
+      <section id="faq" style="margin-top: var(--space-section)">
+        <h2>FAQ</h2>
+        <div class="rows">
+          <details>
+            <summary>Why does LLMRally need an inference server?</summary>
+            <div class="answer">
+              <p>
+                LLMRally is a benchmarking tool — it measures how fast and
+                how well your model runs, but it doesn't execute the model
+                itself. Your inference server (Ollama, LM Studio, etc.) does
+                the actual text generation; LLMRally sends prompts to it and
+                times the responses. This is the same way you use the model
+                in real life, so the numbers you get are the numbers you'd
+                see in your own chat experience.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>What does "Cold" mean next to a speed result?</summary>
+            <div class="answer">
+              <p>
+                <strong>Cold</strong> means the model was freshly loaded into
+                memory when the test ran — the response time includes the
+                one-time cost of loading the model. <strong>Warm</strong> means
+                it was already loaded. Cold runs are marked with a badge and
+                excluded from speed averages because they would understate
+                your model's true performance during normal use.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>What does "est. tokens" mean?</summary>
+            <div class="answer">
+              <p>
+                Some servers report exact token counts in their responses,
+                and some don't. When the server doesn't report, LLMRally
+                estimates the count from the stream (roughly one token per
+                chunk). The "est." badge tells you when this happens — the
+                numbers are close but may be off by a few tokens.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Why is my thinking model showing a separate "thinking at X ms" line?</summary>
+            <div class="answer">
+              <p>
+                Reasoning models (like DeepSeek R1 or Qwen3 with thinking
+                enabled) generate invisible reasoning before they produce a
+                visible answer. LLMRally tracks when the model starts
+                thinking and reports it separately — so the visible answer
+                speed isn't inflated by the hidden thinking phase. This is a
+                feature, not a bug: you get the honest split.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Is my data private?</summary>
+            <div class="answer">
+              <p>
+                Yes, completely. LLMRally connects only to endpoints you
+                configure (typically <span class="path">http://127.0.0.1:…</span>
+                on your own machine). It collects no analytics, has no crash
+                reporting SDK, sends nothing to any external server, and has
+                zero third-party dependencies. Your benchmark results are
+                saved to your Mac's Application Support folder and never
+                leave your device.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Which backends work with LLMRally?</summary>
+            <div class="answer">
+              <p>Any server that speaks the OpenAI-compatible API:</p>
+              <ul>
+                <li><strong>Ollama</strong> — auto-detected on port 11434</li>
+                <li><strong>LM Studio</strong> — enable local server in Developer tab (port 1234)</li>
+                <li><strong>MLX-LM</strong> — <span class="path">pip install mlx-lm</span>, then <span class="path">mlx_lm.server</span></li>
+                <li><strong>llama.cpp</strong> — <span class="path">llama-server</span> on port 8080</li>
+                <li><strong>vLLM</strong> — port 8000</li>
+                <li><strong>Jan</strong> — port 1337</li>
+                <li><strong>KoboldCpp</strong> — port 5001</li>
+                <li>Any other OpenAI-compatible server — add it in Settings</li>
+              </ul>
+            </div>
+          </details>
+          <details>
+            <summary>The score seems low — is my model broken?</summary>
+            <div class="answer">
+              <p>
+                The quality score is pass/fail per item, averaged. A score of
+                30% means the model solved 30% of the test items — this may
+                simply mean the model is small or heavily quantized. The more
+                useful signal is the radar's <em>shape</em>: does one axis
+                stand out? Compare two models (or the same model with
+                different quantization) and focus on which categories differ,
+                not the absolute number.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>Can I run it without a server?</summary>
+            <div class="answer">
+              <p>
+                Yes — you can run LLMRally and browse its interface, but to
+                see benchmark results you need at least one running
+                inference server with a model loaded. The app shows
+                actionable error messages when no backend is detected.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="troubleshooting" style="margin-top: var(--space-section)">
+        <h2>Troubleshooting</h2>
+        <div class="rows">
+          <details>
+            <summary><span class="dot dot--warn"></span>No backend detected / all gray dots</summary>
+            <div class="answer">
+              <p>
+                Check that your inference server is actually running:
+                <span class="path">curl http://127.0.0.1:11434/v1/models</span>
+                should return a JSON list of models. If it doesn't, start the
+                server first (<span class="path">ollama serve</span>, or open
+                LM Studio and click "Start Server" in the Developer tab).
+                Then click <strong>Load Models</strong> in LLMRally.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary><span class="dot dot--warn"></span>"Model not found" error</summary>
+            <div class="answer">
+              <p>
+                The model you selected was removed from the server. Refresh
+                the model list, and make sure the model is actually
+                downloaded: <span class="path">ollama list</span> or the
+                equivalent in your backend. Then pick it from the dropdown
+                again.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary><span class="dot dot--warn"></span>"The model does not fit in memory"</summary>
+            <div class="answer">
+              <p>
+                The model requires more memory than is available on your
+                Mac. Try a smaller model or a more aggressive quantization
+                (e.g. Q4 instead of Q8). You can check available memory via
+                <span class="path">Activity Monitor → Memory</span>.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary><span class="dot dot--warn"></span>Speed results vary between runs</summary>
+            <div class="answer">
+              <p>
+                Some variation is normal — your Mac's CPU/GPU load, thermal
+                state and memory pressure affect inference speed. Run the
+                rally twice after the machine has been idle for a few minutes
+                and take the second result as your baseline. The "Cold" badge
+                marks runs that include the one-time model load cost; those
+                are always slower than warm runs.
+              </p>
+              <p>
+                Deep Testing (paid) runs each stage 3 times and reports the
+                median with a 95% confidence interval — which tells you how
+                stable the number is.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary><span class="dot dot--warn"></span>Quality score shows 0% but the model works fine in chat</summary>
+            <div class="answer">
+              <p>
+                The quality tests are strict: they check for exact numeric
+                answers, specific letters, formatting constraints and exact
+                phrases. A model that responds conversationally (adding
+                "Sure! The answer is…" before the number) may still pass, but
+                a heavily quantized model might genuinely fail all tests.
+                Click any individual test item in the model detail view to see
+                exactly what the model answered and why it passed or failed.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="./">Support</a>
+        </div>
+        <p>© 2026 LLMRally. All rights reserved.</p>
+        <p>
+          LLMRally is a benchmarking tool. It does not run models, does not
+          download models, and does not modify your inference server.
+        </p>
+        <p>Page last updated: 9 November 2026.</p>
+      </div>
+    </footer>
+  </body>
+</html>

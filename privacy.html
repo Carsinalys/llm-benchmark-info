@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LLMRally Privacy Policy</title>
+    <meta
+      name="description"
+      content="LLMRally collects no personal data. No analytics, no tracking, no accounts. The app connects only to user-configured local inference servers."
+    />
+    <meta name="theme-color" content="#051C3A" />
+    <link rel="canonical" href="https://carsinalys.github.io/llm-benchmark-info/privacy.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="assets/icon-256.png" />
+    <link rel="stylesheet" href="assets/styles.css" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="LLMRally Privacy Policy" />
+    <meta
+      property="og:description"
+      content="LLMRally collects no personal data. No accounts, no tracking, no analytics."
+    />
+    <meta property="og:url" content="https://carsinalys.github.io/llm-benchmark-info/privacy.html" />
+    <meta property="og:image" content="https://carsinalys.github.io/llm-benchmark-info/assets/icon-1024.png" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="topbar__brand" href="./">
+          <img src="assets/icon-128.png" alt="" width="26" height="26" />
+          LLMRally
+        </a>
+        <nav class="topbar__nav" aria-label="Sections">
+          <a href="./">Support</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap privacy">
+      <h1 style="margin-top: var(--space-xxl)">Privacy Policy</h1>
+      <p class="muted small">
+        Last updated: 9 November 2026 · App: LLMRally (macOS)
+      </p>
+
+      <h2>Summary</h2>
+      <div class="notice">
+        <p style="margin-top: 0">
+          LLMRally collects no personal data. There are no accounts, no
+          analytics, no advertising, and no third-party SDKs. The app does
+          not track you, and nothing about your benchmark results, model
+          usage, or configuration leaves your device.
+        </p>
+        <p>
+          LLMRally connects <em>only</em> to the inference endpoints you
+          configure yourself — typically a local server running on
+          <span class="path">http://127.0.0.1</span> on your own Mac. The app
+          has no built-in remote servers and no telemetry endpoints.
+        </p>
+      </div>
+
+      <h2>Data the app stores — and why</h2>
+      <table class="spec">
+        <tbody>
+          <tr>
+            <th scope="row">Backend configuration</th>
+            <td>
+              The list of inference server addresses you've added
+              (Ollama, LM Studio, etc.) so the app can auto-detect and
+              connect to them. Stored in Apple's local user-defaults.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Benchmark results</th>
+            <td>
+              Speed metrics (tokens/sec, TTFT), quality scores per test
+              category, and the model's responses to test items. Saved as
+              JSON files in your Mac's <span class="path">Application Support/LLMRally/</span>
+              folder so you can view run history and radar charts. Never
+              uploaded.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Notes and tags</th>
+            <td>
+              Free-text notes and tag words you add to a benchmark result
+              (e.g. "Q4 quant, 8k context") to help you organize your
+              history. Stored locally with the result.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">App settings</th>
+            <td>
+              Preferred backend and model selection. Stored in Apple's
+              local user-defaults so the app picks up where you left off.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>What the app connects to</h2>
+      <table class="spec">
+        <tbody>
+          <tr>
+            <th scope="row">Local inference servers</th>
+            <td>
+              <span class="v yes">Yes</span> — only the endpoints you configure.
+              Typically <span class="path">http://127.0.0.1:11434</span> (Ollama),
+              <span class="path">http://127.0.0.1:1234</span> (LM Studio), etc.
+              Used to send benchmark prompts and receive responses. No data
+              is transmitted to these servers other than the test prompts
+              and the model's actual output.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">App Store (in-app purchases)</th>
+            <td>
+              <span class="v yes">Yes</span> — only when you choose to buy Deep
+              Testing or restore a purchase. Handled by Apple's StoreKit
+              framework. The developer never sees your payment details.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Analytics / tracking</th>
+            <td>
+              <span class="v no">Never</span> — no analytics SDK, no crash
+              reporting, no fingerprinting.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Remote servers</th>
+            <td>
+              <span class="v no">Never</span> — the app contains no built-in
+              remote endpoints of any kind.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Third-party software</h2>
+      <p class="muted">
+        LLMRally contains zero third-party dependencies. The app is built
+        entirely with Apple's frameworks (SwiftUI, StoreKit, Foundation).
+        There are no SDKs from any analytics provider, ad network, or
+        tracking service — so none of them receive any data.
+      </p>
+
+      <h2>What the app does NOT do</h2>
+      <ul class="muted">
+        <li>Does not require an account or sign-in</li>
+        <li>Does not upload your benchmark results</li>
+        <li>Does not upload your model's responses</li>
+        <li>Does not download or install models</li>
+        <li>Does not run models itself</li>
+        <li>Does not read files outside its own sandbox container</li>
+        <li>Does not transmit any data beyond the endpoints you configure</li>
+      </ul>
+
+      <h2>Permissions the app requests</h2>
+      <table class="spec">
+        <tbody>
+          <tr>
+            <th scope="row">App Sandbox</th>
+            <td>Required by macOS for App Store distribution. LLMRally's data stays inside its sandbox container.</td>
+          </tr>
+          <tr>
+            <th scope="row">Outgoing network</th>
+            <td>
+              Used to connect to your local inference endpoints
+              (HTTP requests to <span class="path">127.0.0.1</span> or other
+              addresses you configure). No incoming connections are accepted.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">User-selected file access</th>
+            <td>
+              Used only when you choose to export a benchmark result
+              (CSV, JSON, or PNG). The app writes to a file location you
+              explicitly pick in a save dialog. It can never access
+              files you haven't directed it to.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Deleting your data</h2>
+      <p class="muted">
+        Your benchmark results live as JSON files in
+        <span class="path">~/Library/Containers/com.llmrally.app/Data/Library/Application Support/LLMRally/records/</span>.
+        You can delete them from inside the app (select a model in the
+        results list, then click "Delete results") or by removing that
+        folder manually. The app stores nothing anywhere else.
+      </p>
+
+      <h2>Children's privacy</h2>
+      <p class="muted">
+        LLMRally is a developer tool and is not directed at children under 13.
+        The app does not knowingly collect any personal information from any
+        user of any age, because it does not collect any information at all.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p class="muted">
+        If the privacy policy changes, the updated version will be posted
+        here with a new "last updated" date. Material changes will be
+        reflected in the App Store description.
+      </p>
+
+      <h2>Contact</h2>
+      <p class="muted">
+        Questions about privacy? Contact:
+        <a href="mailto:cardinalys81@gmail.com">cardinalys81@gmail.com</a>.
+        A postal address is available on request.
+      </p>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__links">
+          <a href="./">Support</a>
+          <a href="privacy.html">Privacy</a>
+        </div>
+        <p>© 2026 LLMRally. All rights reserved.</p>
+        <p>Page last updated: 9 November 2026.</p>
+      </div>
+    </footer>
+  </body>
+</html>
